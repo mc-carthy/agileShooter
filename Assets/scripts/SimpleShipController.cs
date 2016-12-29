@@ -15,7 +15,7 @@ public class SimpleShipController : MonoBehaviour {
   }
 
   private void Update () {
-    MoveShip();
+    MoveShip ();
   }
 
   private void MoveShip() {
@@ -32,16 +32,16 @@ public class SimpleShipController : MonoBehaviour {
 
     #else
 
-    delta.x = Input.GetAxisRaw("Horizontal");
-    delta.y = Input.GetAxisRaw("Vertical");
+    delta.x = Input.GetAxisRaw ("Horizontal");
+    delta.y = Input.GetAxisRaw ("Vertical");
 
     #endif
 
     transform.Translate(
-      new Vector3(0, delta.y, 0) * tranSpeed * Time.deltaTime
+      new Vector3 (0, delta.y, 0) * tranSpeed * Time.deltaTime
     );
     transform.Rotate(
-      new Vector3(0, 0, -delta.x) * rotSpeed * Time.deltaTime
+      new Vector3 (0, 0, -delta.x) * rotSpeed * Time.deltaTime
     );
   }
 

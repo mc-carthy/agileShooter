@@ -4,7 +4,7 @@
 // Loop the object transforms across a rectangular area.
 // When the object leaves the area on the right, it comes back on the left.
 
-[AddComponentMenu("Vistage/Transform Looper")]
+[AddComponentMenu ("Vistage/TransformLooper")]
 public class TransformLooper : MonoBehaviour {
 
 	private GameArea gameArea;

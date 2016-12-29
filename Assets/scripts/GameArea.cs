@@ -5,7 +5,7 @@
 /// Defines rectangular area.
 /// </summary>
 
-[AddComponentMenu("Vistage/Game Area")]
+[AddComponentMenu ("Vistage/GameArea")]
 public class GameArea : MonoBehaviour {
 
 	private Rect _area;
@@ -18,9 +18,9 @@ public class GameArea : MonoBehaviour {
 	public Color gizmoColor = new Color(0, 0, 1, 0.2f);
 	private Color gizmoWireColor;
 
-	private void Awake () {
-		SetArea(size);
-	}
+	// private void Awake () {
+	// 	SetArea(size);
+	// }
 
 	private void OnDrawGizmos () {
 		Gizmos.matrix = transform.localToWorldMatrix;
