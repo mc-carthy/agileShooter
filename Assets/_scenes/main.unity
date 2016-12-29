@@ -138,6 +138,10 @@ MonoBehaviour:
   number: 5
   area: {fileID: 1561814136}
   minDistanceFromPlayer: 3
+  angle: 0
+  spread: 0
+  minSpeed: 1
+  maxSpeed: 10
 --- !u!1 &247193816
 GameObject:
   m_ObjectHideFlags: 0

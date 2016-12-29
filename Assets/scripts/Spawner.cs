@@ -19,6 +19,20 @@ public class Spawner : MonoBehaviour {
 	public GameArea area;
 	public float minDistanceFromPlayer;
 
+	[HeaderAttribute ("Velocity")]
+	[RangeAttribute (-180f, 180f)]
+	[SerializeField]
+	private float angle;
+	[RangeAttribute (0f, 360f)]
+	[SerializeField]
+	private float spread;
+	[RangeAttribute (0f, 10f)]
+	[SerializeField]
+	private float minSpeed = 1;
+	[RangeAttribute (0f, 10f)]
+	[SerializeField]
+	private float maxSpeed = 10;
+
 	private Transform player;
 	private int _remaining;
 
@@ -45,7 +59,20 @@ public class Spawner : MonoBehaviour {
 				_position = (_position - player.position).normalized * minDistanceFromPlayer;
 			}
 			
-			Instantiate (reference, _position, Quaternion.identity);
+			GameObject obj = Instantiate (reference, _position, Quaternion.identity) as GameObject;
+			Rigidbody2D rb = obj.GetComponent<Rigidbody2D> ();
+
+			if (rb != null) {
+				float angleDelta = Random.Range(-spread * 0.5f, spread * 0.5f);
+				float objAngle = angle + angleDelta;
+
+				Vector2 direction = new Vector2 (Mathf.Sin (Mathf.Deg2Rad * objAngle), Mathf.Cos (Mathf.Deg2Rad * objAngle));
+
+				direction *= Random.Range(minSpeed, maxSpeed);
+
+				rb.velocity = direction;
+			}
+
 			_remaining--;
 			
 			yield return new WaitForSeconds (1 / Random.Range (minRate, maxRate));
