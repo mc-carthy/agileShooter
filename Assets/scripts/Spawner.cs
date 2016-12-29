@@ -20,7 +20,6 @@ public class Spawner : MonoBehaviour {
 	public float minDistanceFromPlayer;
 
 	private Transform player;
-	private float _timeStamp;
 	private int _remaining;
 
 	private IEnumerator Start () {

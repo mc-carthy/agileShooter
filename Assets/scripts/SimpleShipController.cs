@@ -2,19 +2,22 @@
 
 public class SimpleShipController : MonoBehaviour {
 
+  private Rigidbody2D rb;
   private Vector2 delta = Vector2.zero;
-  private float tranSpeed = 5f;
-  private float rotSpeed = 50f;
+  private Vector2 force = Vector2.zero;
+  private float torque;
+  private float shipThrust = 10f;
+  private float shipTorque = 1f;
 
   private void Awake () {
-
+    rb = GetComponent<Rigidbody2D> ();
   }
 
   private void Start () {
 
   }
 
-  private void Update () {
+  private void FixedUpdate () {
     MoveShip ();
   }
 
@@ -22,9 +25,11 @@ public class SimpleShipController : MonoBehaviour {
 
     #if (UNITY_IOS || UNITY_ANDROID) && !UNITY_EDITOR || REMOTE
 
-    if (Input.touchCount > 0) {
+    if (Input.touchCount > 0) 
+    {
       Touch t = Input.touches[0];
-      if (t.phase == TouchPhase.Moved) {
+      if (t.phase == TouchPhase.Moved) 
+      {
         delta.x = t.deltaPosition.x;
         delta.y = t.deltaPosition.y;
       }
@@ -37,12 +42,11 @@ public class SimpleShipController : MonoBehaviour {
 
     #endif
 
-    transform.Translate(
-      new Vector3 (0, delta.y, 0) * tranSpeed * Time.deltaTime
-    );
-    transform.Rotate(
-      new Vector3 (0, 0, -delta.x) * rotSpeed * Time.deltaTime
-    );
+    force.y = delta.y * shipThrust;
+    torque = -delta.x * shipTorque;
+
+    rb.AddRelativeForce (force);
+    rb.AddTorque (torque);
   }
 
 }

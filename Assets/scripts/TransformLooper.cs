@@ -15,7 +15,7 @@ public class TransformLooper : MonoBehaviour {
 		gameArea = FindObjectOfType<GameArea>();
 	}
 
-	private void Update () {
+	private void FixedUpdate () {
 		areaSpacePosition = gameArea.transform.InverseTransformPoint(transform.position);
 
 		if (gameArea.Area.Contains(areaSpacePosition)) {
