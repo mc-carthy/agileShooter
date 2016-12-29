@@ -132,10 +132,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reference: {fileID: 1061232061584346, guid: c04ff692bd6404ac78ce1db1d3f75679, type: 2}
-  rate: 1
-  isInfinite: 0
+  minRate: 0.5
+  maxRate: 2
+  isInfinite: 1
   number: 5
   area: {fileID: 1561814136}
+  minDistanceFromPlayer: 3
 --- !u!1 &247193816
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,6 +327,10 @@ Prefab:
     - target: {fileID: 4735439569549654, guid: 6d1b1f1cb11a44f74b4e483b5497c9b2, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849702162575068, guid: 6d1b1f1cb11a44f74b4e483b5497c9b2, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6d1b1f1cb11a44f74b4e483b5497c9b2, type: 2}
