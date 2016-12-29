@@ -7,30 +7,33 @@
 [AddComponentMenu("Vistage/Transform Looper")]
 public class TransformLooper : MonoBehaviour {
 
-	[SerializeField]
-	private Rect area;
+	private GameArea gameArea;
 
-	private Vector3 position;
+	private Vector3 areaSpacePosition;
+
+	private void Awake () {
+		gameArea = FindObjectOfType<GameArea>();
+	}
 
 	private void Update () {
-		position = transform.position;
+		areaSpacePosition = gameArea.transform.InverseTransformPoint(transform.position);
 
-		if (area.Contains(position)) {
+		if (gameArea.Area.Contains(areaSpacePosition)) {
 			return;
 		}
 
-		if (position.x < area.xMin) {
-			position.x = area.xMax;
-		} else if (position.x > area.xMax) {
-			position.x = area.xMin;
+		if (areaSpacePosition.x < gameArea.Area.xMin) {
+			areaSpacePosition.x = gameArea.Area.xMax;
+		} else if (areaSpacePosition.x > gameArea.Area.xMax) {
+			areaSpacePosition.x = gameArea.Area.xMin;
 		}
 
-		if (position.y < area.yMin) {
-			position.y = area.yMax;
-		} else if (position.y > area.yMax) {
-			position.y = area.yMin;
+		if (areaSpacePosition.y < gameArea.Area.yMin) {
+			areaSpacePosition.y = gameArea.Area.yMax;
+		} else if (areaSpacePosition.y > gameArea.Area.yMax) {
+			areaSpacePosition.y = gameArea.Area.yMin;
 		}
 
-		transform.position = position;
+		transform.position = gameArea.transform.TransformPoint(areaSpacePosition);
 	}
 }

@@ -300,12 +300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3f24011349944858154b7787aee3c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  area:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 10
-    height: 10
 --- !u!1 &752468100
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,6 +556,48 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &1561814135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1561814137}
+  - component: {fileID: 1561814136}
+  m_Layer: 0
+  m_Name: gameArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1561814136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1561814135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: effd52db00d754c6e9cac459d18628ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: {x: 12.5, y: 20}
+  gizmoColor: {r: 0, g: 0, b: 1, a: 0.2}
+--- !u!4 &1561814137
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1561814135}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1584823505
 GameObject:
   m_ObjectHideFlags: 0
