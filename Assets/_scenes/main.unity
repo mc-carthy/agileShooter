@@ -132,6 +132,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reference: {fileID: 1061232061584346, guid: c04ff692bd6404ac78ce1db1d3f75679, type: 2}
+  rate: 1
+  isInfinite: 0
+  number: 5
+  area: {fileID: 1561814136}
 --- !u!1 &247193816
 GameObject:
   m_ObjectHideFlags: 0

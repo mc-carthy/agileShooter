@@ -11,7 +11,8 @@ public class GameArea : MonoBehaviour {
 	[SerializeField]
 	[HideInInspector]
 	private Rect _area;
-	public Rect Area {
+	public Rect Area 
+	{
 		get { 
 			return _area; 
 		}
@@ -21,7 +22,8 @@ public class GameArea : MonoBehaviour {
 	}
 
 	public Vector2 size;
-	public Vector2 Size {
+	public Vector2 Size 
+	{
 		get {
 			return Area.size;
 		}
@@ -34,20 +36,34 @@ public class GameArea : MonoBehaviour {
 	public Color gizmoColor = new Color(0, 0, 1, 0.2f);
 	private Color gizmoWireColor;
 
-	private void Awake () {
+	private void Awake () 
+	{
 		Size = size;
 	}
 
-	private void OnDrawGizmos () {
+	private void OnDrawGizmos () 
+	{
 		Gizmos.matrix = transform.localToWorldMatrix;
 		Gizmos.color = gizmoColor;
 		Gizmos.DrawCube (Vector3.zero, new Vector3 (Area.width, Area.height, 0));
 		Gizmos.DrawWireCube (Vector3.zero, new Vector3 (Area.width, Area.height, 0));
 	}
 
-	private void OnValidate () {
+	private void OnValidate () 
+	{
 		Size = size;
 		gizmoWireColor = new Color (gizmoColor.r, gizmoColor.g, gizmoColor.b, 1);
+	}
+
+	public Vector3 GetRandomPosition () 
+	{
+		Vector3 randomPos = Vector3.zero;
+
+		randomPos.x = Random.Range(Area.xMin, Area.xMax);
+		randomPos.y = Random.Range(Area.yMin, Area.yMax);
+		randomPos = transform.TransformPoint(randomPos);
+
+		return randomPos;
 	}
 
 }
