@@ -8,6 +8,24 @@
 [AddComponentMenu ("Vistage/GameArea")]
 public class GameArea : MonoBehaviour {
 
+	static private GameArea main;
+	static public GameArea Main {
+		get {
+			if (main == null) {
+				main = FindObjectOfType<GameArea>();
+				if (main == null) {
+					GameObject go = new GameObject("Game Area : Main");
+					main = go.AddComponent<GameArea>();
+					go.AddComponent<FitAreaToCamera>();
+				}
+			}
+			return main;
+		}
+		set {
+			main = value;
+		}
+	}
+
 	[SerializeField]
 	[HideInInspector]
 	private Rect _area;

@@ -7,12 +7,14 @@
 [AddComponentMenu ("Vistage/TransformLooper")]
 public class TransformLooper : MonoBehaviour {
 
-	private GameArea gameArea;
+	public GameArea gameArea;
 
 	private Vector3 areaSpacePosition;
 
 	private void Awake () {
-		gameArea = FindObjectOfType<GameArea>();
+		if (gameArea == null) {
+			gameArea = GameArea.Main;
+		}
 	}
 
 	private void FixedUpdate () {
