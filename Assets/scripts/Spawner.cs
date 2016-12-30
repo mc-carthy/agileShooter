@@ -80,6 +80,7 @@ public class Spawner : MonoBehaviour {
 				_position = (_position - player.position).normalized * minDistanceFromPlayer;
 			}
 			
+			// TODO : Use Object Pooling
 			GameObject obj = Instantiate (reference, _position, Quaternion.identity) as GameObject;
 			Rigidbody2D rb = obj.GetComponent<Rigidbody2D> ();
 

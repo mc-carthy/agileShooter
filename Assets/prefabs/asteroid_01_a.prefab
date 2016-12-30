@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 58354582144838550}
   - component: {fileID: 50067710530354478}
   - component: {fileID: 114448660276976142}
+  - component: {fileID: 114386740372248698}
   m_Layer: 0
   m_Name: asteroid_01_a
   m_TagString: Untagged
@@ -95,6 +96,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114386740372248698
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1908806732142928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61e773ec5d3d849edb29572401435a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114448660276976142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -106,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3f24011349944858154b7787aee3c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameArea: {fileID: 0}
 --- !u!212 &212426271078243768
 SpriteRenderer:
   m_ObjectHideFlags: 1
