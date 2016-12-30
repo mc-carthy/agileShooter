@@ -33,11 +33,26 @@ public class Spawner : MonoBehaviour {
 	[SerializeField]
 	private float maxSpeed = 10;
 
+	[HeaderAttribute ("Animator")]
+	public string animatorSpawningParameterName = "isSpawning";
+	public float animatorDelayIn;
+	public float animatorDelayOut;
+
+	private Animator anim;
+	private int spawningHashId;
+
 	private Transform player;
-	private int _remaining;
+	private int remaining;
+
+	private void Awake () {
+		anim = GetComponent<Animator> ();
+		if (anim) {
+			spawningHashId = Animator.StringToHash(animatorSpawningParameterName);
+		}
+	}
 
 	private IEnumerator Start () {
-		_remaining = number;
+		remaining = number;
 		if (minDistanceFromPlayer > 0)
 		{
 			GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
@@ -51,7 +66,13 @@ public class Spawner : MonoBehaviour {
 			}
 		}
 
-		while (isInfinite || _remaining > 0) {
+		if (anim != null)
+		{
+			anim.SetBool (spawningHashId, true);
+			yield return new WaitForSeconds (animatorDelayIn);
+		}
+
+		while (isInfinite || remaining > 0) {
 			Vector3 _position = (area != null) ? area.GetRandomPosition () : transform.position;
 			
 			if (player != null && Vector3.Distance (_position, player.transform.position) < minDistanceFromPlayer)
@@ -73,9 +94,18 @@ public class Spawner : MonoBehaviour {
 				rb.velocity = direction;
 			}
 
-			_remaining--;
+			remaining--;
 			
 			yield return new WaitForSeconds (1 / Random.Range (minRate, maxRate));
 		}
+
+		if (anim != null)
+		{
+			anim.SetBool (spawningHashId, false);
+			yield return new WaitForSeconds (animatorDelayOut);
+		}
+
+		gameObject.SetActive(false);
+
 	}
 }
