@@ -35,7 +35,7 @@ public class Item : MonoBehaviour {
 				GameManager.Damage = 0;
 				break;
 			case TYPE.ExtraLife:
-				// TODO GameManager.Lives++
+				GameManager.Lives++;
 				break;
 			default:
 				Debug.LogWarning("Incorrect Type given");
@@ -50,7 +50,7 @@ public class Item : MonoBehaviour {
 	{
 		ren.enabled = false;
 		col.enabled = false;
-		
+
 		source.Play ();
 
 		yield return new WaitForSeconds (source.clip.length);

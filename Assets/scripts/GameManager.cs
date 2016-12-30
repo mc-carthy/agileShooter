@@ -13,12 +13,28 @@ static public class GameManager {
 		set {
 			if (damage != value) {
 				damage = value;
-				Debug.Log(value);
 
 				if (damage >= MAX_DAMAGE)
 				{
-					// TODO : Decrease number of lives
 					damage = 0;
+					Lives--;
+				}
+			}
+		}
+	}
+
+	static private int lives = 5;
+	static public int Lives {
+		get {
+			return lives;
+		}
+		set {
+			if (lives != value) {
+				lives = value;
+
+				if (lives <= 0)
+				{
+					// TODO : Handle gameover
 				}
 			}
 		}
