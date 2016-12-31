@@ -15,12 +15,18 @@ public class GameUI : MonoBehaviour {
 		scoreText.text = string.Format ("SCORE: {0}", GameManager.Score.ToString ());
 		hiScoreText.text = string.Format ("HI-SCORE: {0}", GameManager.HighScore.ToString ());
 
-		GameManager.ScoreChanged += OnScoreChanged;
-	}
-
-	private void OnScoreChanged (int score)
-	{
-		scoreText.text = string.Format ("SCORE: {0}", score.ToString ());
+		GameManager.LivesChanged += delegate(int lives)
+			{
+				livesText.text = string.Format ("{0} {1}", lives.ToString (), GameManager.Lives > 1 ? "Lives" : "Life");
+			};
+		GameManager.ScoreChanged += delegate(int score)
+			{
+				scoreText.text = string.Format ("SCORE: {0}", score.ToString ());
+			};
+		GameManager.HiScoreChanged += delegate(int score)
+			{
+				hiScoreText.text = string.Format ("HI-SCORE: {0}", GameManager.HighScore.ToString ());
+			};
 	}
 
 }

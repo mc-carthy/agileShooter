@@ -5,6 +5,9 @@ static public class GameManager {
 
 	public const float MAX_DAMAGE = 100;
 
+	public delegate void ScoreChange (int score);
+	public delegate void LivesChange (int lives);
+
 	static private float damage;
 	static public float Damage 
 	{
@@ -24,6 +27,7 @@ static public class GameManager {
 		}
 	}
 
+	static public event LivesChange LivesChanged;
 	static private int lives = 5;
 	static public int Lives 
 	{
@@ -34,6 +38,10 @@ static public class GameManager {
 			if (value != lives) {
 				lives = value;
 
+				if (LivesChanged != null)
+				{
+					LivesChanged(lives);
+				}
 				if (lives <= 0)
 				{
 					// TODO : Handle gameover
@@ -42,7 +50,6 @@ static public class GameManager {
 		}
 	}
 	
-	public delegate void ScoreChange (int score);
 	static public event ScoreChange ScoreChanged;
 	static private int score;
 	static public int Score
@@ -66,11 +73,19 @@ static public class GameManager {
 		}
 	}
 
+	static public event ScoreChange HiScoreChanged;
 	static private int highScore;
 	static public int HighScore
 	{
 		get { return PlayerPrefs.GetInt ("HighScore"); }
-		set { PlayerPrefs.SetInt ("HighScore", value); }
+		set 
+		{
+			PlayerPrefs.SetInt ("HighScore", value); 
+			if (HiScoreChanged != null)
+			{
+				HiScoreChanged(value);
+			}
+		}
 	}
 	
 }
