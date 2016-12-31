@@ -7,7 +7,7 @@ public class Asteroid : MonoBehaviour {
 
 	private void OnCollisionEnter2D (Collision2D other)
 	{
-		if (!other.gameObject.CompareTag("Projectile"))
+		if (!other.gameObject.CompareTag("projectile"))
 		{
 			return;
 		}

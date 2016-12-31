@@ -41,7 +41,9 @@ static public class GameManager {
 			}
 		}
 	}
-
+	
+	public delegate void ScoreChange (int score);
+	static public event ScoreChange ScoreChanged;
 	static private int score;
 	static public int Score
 	{
@@ -51,6 +53,11 @@ static public class GameManager {
 			if (value != score) 
 			{
 				score = value;
+				
+				if (ScoreChanged != null)
+				{
+				ScoreChanged(score);
+				}
 				if (score > HighScore)
 				{
 					HighScore = value;
